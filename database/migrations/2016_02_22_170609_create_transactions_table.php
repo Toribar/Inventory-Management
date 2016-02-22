@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned()->index();
             $table->integer('quantity');
-            $table->decimal('price', 18, 2);
+            $table->decimal('price', 18, 2)->unsigned();
             $table->timestamps();
         });
     }
