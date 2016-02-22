@@ -30,7 +30,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
     return [
-        'product_id' => factory(App\Product::class)->create()->id,
+        'product_id' => null,
         'quantity' => $faker->numberBetween(-10, 10),
         'price' => $faker->numberBetween(100, 200),
     ];
