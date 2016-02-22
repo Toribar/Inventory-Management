@@ -10,4 +10,9 @@ class Product extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function getQuantity()
+    {
+        return $this->transactions()->sum('quantity');
+    }
 }
