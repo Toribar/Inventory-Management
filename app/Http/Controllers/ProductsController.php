@@ -27,7 +27,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        
+
+
     }
 
     /**
@@ -38,7 +40,21 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+
+        $name = $request->name;
+
+        $purchase_price = $request->purchase_price;
+
+        $sell_price = $request->sell_price;
+
+        Product::create([
+            'name' => $name,
+            'purchase_price' => $purchase_price,
+            'sell_price' => $sell_price,
+        ]);    
+
+        return redirect()->back();
     }
 
     /**
