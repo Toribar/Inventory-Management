@@ -39,6 +39,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <h2><a href="/products/">UDJI BIATCH</a></h2>
             </div>
         </div>
     </body>

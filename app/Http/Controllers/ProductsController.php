@@ -15,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate();
+        $products = Product::paginate(10);
 
         return view('products.index', compact('products'));
     }
@@ -40,6 +40,13 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'name' => 'required|unique:products,name',
+            'purchase_price' => 'required',
+            'sell_price' => 'required',    
+        ]);
+
         $product = new Product;
 
         $name = $request->name;

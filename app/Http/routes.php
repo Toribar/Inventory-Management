@@ -29,5 +29,5 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     Route::resource('products', 'ProductsController');
     Route::resource('transactions', 'TransactionsController');
-    Route::resource('lager', 'LagerController');
+    Route::resource('new_day', 'NewDayController');
 });

@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->word,
         'purchase_price' => $faker->numberBetween(50, 100),
         'sell_price' => $faker->numberBetween(100, 200),
     ];
@@ -31,7 +31,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 $factory->define(App\Transaction::class, function (Faker\Generator $faker) {
     return [
         'product_id' => null,
-        'quantity' => $faker->numberBetween(-10, 10),
+        'quantity' => $faker->numberBetween(0, 100),
         'price' => $faker->numberBetween(100, 200),
     ];
 });

@@ -7,6 +7,7 @@ use App\Transaction;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class TransactionsController extends Controller
 {
@@ -15,9 +16,18 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        $products = Product::all();
+        $date = Carbon::parse($request->date);
+
+        // $popis = Transaction::where('created_at', '>=', $date)->where('created_at', '<', $date->copy()->addDay())
+        // ->where('quantity', '<', '0')->get();
+        // $popis = $popis->groupBy('product_id');
+        // dd($popis->toArray());
+
+        return view('transactions.index', compact('products', 'popis'));
     }
 
     /**
