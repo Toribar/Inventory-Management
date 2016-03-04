@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactionsTable extends Migration
+class CreatePurchasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('workday_id')->unsigned()->index();
             $table->integer('product_id')->unsigned()->index();
-            $table->integer('quantity');
+            $table->integer('quantity')->unsigned();
             $table->decimal('price', 18, 2)->unsigned();
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('transactions');
+        Schema::drop('purchases');
     }
 }

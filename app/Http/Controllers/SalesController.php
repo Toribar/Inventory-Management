@@ -2,32 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Transaction;
-use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 
-class TransactionsController extends Controller
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Product;
+use App\Workday;
+
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
 
-        $products = Product::all();
-        $date = Carbon::parse($request->date);
+        $workdays = Workday::latest()->paginate();
 
-        // $popis = Transaction::where('created_at', '>=', $date)->where('created_at', '<', $date->copy()->addDay())
-        // ->where('quantity', '<', '0')->get();
-        // $popis = $popis->groupBy('product_id');
-        // dd($popis->toArray());
+        return view('sales.index', compact('workdays'));
 
-        return view('transactions.index', compact('products'));
     }
 
     /**
@@ -48,23 +43,15 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::find($request->product_id);
+        $workday = Workday::getActive();
 
-        $price = $product->sell_price;
+        $sale = new Sale($request->all());
 
-        $quantity = $request->quantity;
+        $sale->purchase_price = 0;
 
-        if ($request->direction == 'in') {
-            $price = $product->purchase_price;
-        } else {
-            $quantity = -$quantity;
-        }
+        $sale->workday_id = $workday->id;
 
-        Transaction::create([
-            'product_id' => $product->id,
-            'quantity' => $quantity,
-            'price' =>  $price,
-        ]);
+        $sale->save();
 
         return redirect()->back();
     }

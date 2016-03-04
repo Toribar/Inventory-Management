@@ -8,7 +8,9 @@
 
 		<style type="text/css">
 			body { padding-top: 70px; }
-
+			.panel-body p {
+				font-size: 19px;
+			}
 		</style>
 
 		<title>Colaculator</title>

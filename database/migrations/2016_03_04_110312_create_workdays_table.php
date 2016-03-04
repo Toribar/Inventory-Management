@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewDayTable extends Migration
+class CreateWorkdaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class CreateNewDayTable extends Migration
      */
     public function up()
     {
-        Schema::create('newDay', function (Blueprint $table) {
+        Schema::create('workdays', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaction_id')->unsigned()->index();
+            $table->timestamp('started_at');
+            $table->timestamp('closed_at')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateNewDayTable extends Migration
      */
     public function down()
     {
-        Schema::drop('newDay');
+        Schema::drop('workdays');
     }
 }
