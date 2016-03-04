@@ -28,6 +28,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 	Route::get('workdays/all', ['uses' => 'WorkdaysController@all', 'as' => 'workdays.all']);
+	Route::resource('purchase', 'PurchasesController');
     Route::resource('products', 'ProductsController');
     Route::resource('sales', 'SalesController');
     Route::resource('workdays', 'WorkdaysController');

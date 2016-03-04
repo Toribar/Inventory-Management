@@ -28,7 +28,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Transaction::class, function (Faker\Generator $faker) {
+$factory->define(App\Sale::class, function (Faker\Generator $faker) {
     return [
         'product_id' => null,
         'quantity' => $faker->numberBetween(0, 100),

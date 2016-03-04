@@ -8,13 +8,13 @@ class Product extends Model
 {
     protected $guarded = [];
 
-    public function transactions()
+    public function sales()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Sale::class);
     }
 
     public function getQuantity()
     {
-        return $this->transactions()->sum('quantity');
+        return $this->sales()->sum('quantity');
     }
 }

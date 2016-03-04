@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Workday;
 use App\Product;
+use App\Sale;
 
 class WorkdaysController extends Controller
 {

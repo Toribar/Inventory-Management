@@ -19,7 +19,7 @@
 					<td>{{ $product->name }}</td>
 					<td>{{ $product->purchase_price }}</td>
 					<td>{{ $product->sell_price }}</td>
-					<td>{{ $product->getQuantity() }}</td>
+					<td>@{{ $product->getQuantity() }}</td>
 				</tr>
 			@endforeach
 		</table>
