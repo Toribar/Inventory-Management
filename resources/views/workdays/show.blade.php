@@ -2,13 +2,29 @@
 @section('content')
 
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<h3>Popis za dan {{ $workday->started_at->format('d.m.Y') }}</h3>
-	</div>
 
-	<div class="panel-body">
-		<p> Ukupna vrednost prodatih dobara je: 8000.00 dinara (hardkodovano)</p>
-		<p> Ukupan profit je: 3000.00 (hardkodovano) </p>
+	<div class="table-responsive">
+		<table class="table	table-bordered">
+			<tr>
+				<th>Artikl</th>
+				<th>Kolicina</th>
+				<th>Cena</th>
+				<th>Ukupno</th>
+			</tr>
+
+			@foreach($workday->sales as $sale)
+				<tr>
+					<td>{{ $sale->product->name }}</td>
+					<td>{{ $sale->quantity }}</td>
+					<td>{{ $sale->price }}</td>
+					<td>{{ number_format($sale->quantity * $sale->price, 2) }}</td>
+				</tr>
+			@endforeach
+				<tr>
+					<td colspan="3"></td>
+					<td>{{ number_format($workday->getTotal(),2, '.', ',') }}</td>
+				</tr>
+		</table>
 	</div>
 </div>
 

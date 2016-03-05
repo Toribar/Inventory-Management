@@ -10,7 +10,7 @@
 		<ul>
 			@foreach ($workdays as $workday)
 				<li>
-					<a href="#">{{ $workday->created_at }}</a>
+					<a href="{{ route('workdays.show', [$workday->id]) }}">{{ $workday->created_at }}</a>
 				</li>
 			@endforeach
 		</ul>

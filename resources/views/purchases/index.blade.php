@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
 
-{{ Form::open(['route' => 'purchase.index'], ['class' => 'form-inline']) }}
+{{ Form::open(['route' => 'purchase.store'], ['class' => 'form-inline']) }}
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="text-center">Popis</h3>
+			<h3 class="text-center">Unos na Lager</h3>
 		</div>
 
 		<div class="panel-body">

@@ -23,8 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
-        'purchase_price' => $faker->numberBetween(50, 100),
-        'sell_price' => $faker->numberBetween(100, 200),
+        'price' => $faker->numberBetween(50, 100),
     ];
 });
 

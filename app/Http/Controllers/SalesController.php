@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Workday;
+use App\Sale;
 
 class SalesController extends Controller
 {
@@ -20,6 +21,7 @@ class SalesController extends Controller
     {
 
         $workdays = Workday::latest()->paginate();
+       
 
         return view('sales.index', compact('workdays'));
 
@@ -48,6 +50,10 @@ class SalesController extends Controller
         $sale = new Sale($request->all());
 
         $sale->purchase_price = 0;
+
+        $product = Product::find($request->product_id);
+
+        $sale->price = $product->price;
 
         $sale->workday_id = $workday->id;
 

@@ -7,7 +7,7 @@
 	{{ Form::close() }}
 @else
 
-	{{ Form::open(['route' => 'workdays.index'], ['class' => 'form-inline']) }}
+	{{ Form::open(['route' => 'sales.store'], ['class' => 'form-inline']) }}
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="text-center">Popis</h3>
@@ -24,7 +24,7 @@
 			    <div class="form-group col-md-6">
 			        <label>Količina</label>
 			        <strong>
-			        	{{ Form::number('quantity', null, ['class' => 'form-control', 'autocomplete' => 'off']) }}
+			        	{{ Form::number('quantity', 10, ['class' => 'form-control', 'autocomplete' => 'off']) }}
 			    	</strong>
 			    </div>
 
