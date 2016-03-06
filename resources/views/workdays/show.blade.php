@@ -22,10 +22,13 @@
 			@endforeach
 				<tr>
 					<td colspan="3"></td>
-					<td>{{ number_format($workday->getTotal(),2, '.', ',') }}</td>
+					<td>{{ number_format($workday->getSalesTotal(),2, '.', ',') }}</td>
 				</tr>
 		</table>
 	</div>
+	<br>
+	<h5>Ukupan profit za   {{ $workday->closed_at->format('d.m.Y') }}   je {{ $workday->getProfit() }}</h5>
 </div>
 
+<a href="{{ route('sales.index') }}" class="btn btn-info"> Nazad na Listu</a>
 @stop

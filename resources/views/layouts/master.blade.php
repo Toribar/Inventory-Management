@@ -11,6 +11,7 @@
 			.panel-body p {
 				font-size: 19px;
 			}
+			.form-control { font-size: 17px; }
 		</style>
 
 		<title>Colaculator</title>

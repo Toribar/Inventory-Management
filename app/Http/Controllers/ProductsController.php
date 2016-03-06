@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Sale;
+use App\Purchase;
 
 class ProductsController extends Controller
 {
@@ -17,7 +19,7 @@ class ProductsController extends Controller
     {
         $products = Product::paginate(10);
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'purchase_price'));
     }
 
     /**
@@ -43,7 +45,6 @@ class ProductsController extends Controller
 
         $this->validate($request, [
             'name' => 'required|unique:products,name',
-            'purchase_price' => 'required',
             'sell_price' => 'required',    
         ]);
 
@@ -51,15 +52,15 @@ class ProductsController extends Controller
 
         $name = $request->name;
 
-        $purchase_price = $request->purchase_price;
-
-        $sell_price = $request->sell_price;
+        $price = $request->sell_price;
 
         Product::create([
             'name' => $name,
-            'purchase_price' => $purchase_price,
-            'sell_price' => $sell_price,
-        ]);    
+            // 'purchase_price' => $purchase_price,
+            'price' => $price,
+        ]); 
+
+        $purchase = Purchase::find($request->product_id);
 
         return redirect()->back();
     }
@@ -83,7 +84,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        
+        return view('products.edit', compact('product'));
     }
 
     /**

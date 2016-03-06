@@ -3,7 +3,7 @@
 
 @if (!$active)
 	{{ Form::open(['route' => 'workdays.store']) }}
-		<button type="submit" class="btn btn-default">Pocni</button>
+		<button type="submit" class="btn btn-default btn-block btn-lg	">Pocni</button>
 	{{ Form::close() }}
 @else
 
@@ -36,7 +36,7 @@
 
 <hr>
 	{{ Form::open(['route' => ['workdays.update', $active->id], 'method' => 'PUT']) }}
-		<button type="submit" class="btn btn-default">Zatvori</button>
+		<button type="submit" class="btn btn-default btn-block btn-lg">Zatvori</button>
 	{{ Form::close() }}
 @endif
 

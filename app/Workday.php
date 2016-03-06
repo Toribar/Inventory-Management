@@ -15,7 +15,12 @@ class Workday extends Model
     	return $this->hasMany(Sale::class);
     }
 
-    public function getTotal()
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function getSalesTotal()
     {
     	// return $this->sales()->sum(DB::raw('quantity * price'));  moze i ovako //baza sumira
     	
@@ -29,6 +34,24 @@ class Workday extends Model
     	}
 
     	return $total;
+    }
+
+    public function getPurchasesTotal()
+    {
+
+        $total = 0;
+
+
+        foreach($this->sales as $sale) {
+            $total += $sale->purchase_price * $sale->quantity;
+        }
+
+        return $total;
+    }
+
+    public function getProfit()
+    {
+        return $this->getSalesTotal() - $this->getPurchasesTotal();
     }
 
     public static function getActive()
